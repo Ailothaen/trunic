@@ -1,0 +1,626 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Trunic</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/pure-min.css" />
+    <link rel="stylesheet" href="css/svg.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <style>
+        :root{--svg-fg: black;}
+    </style>
+</head>
+
+<body>
+
+<div style="text-align:center;">
+    <h1 class="ribbon">Trunic Drawer</h1>
+</div>
+
+<main>
+    <div id="section-settings">
+        <div id="section-settings-left">
+            <button type="button" class="pure-button pure-button-primary" type="button" onclick="draw()"><i></i> Draw</button>
+            <button type="button" class="pure-button pure-button-success" type="button" onclick="downloadPNG()"><i></i> Save as PNG</button>
+            <button type="button" class="pure-button pure-button-success" type="button" onclick="downloadSVG()"><i></i> Save as SVG</button>
+            <button type="button" class="pure-button pure-button-secondary" type="button" onclick="window.open('help.html', '_blank', 'popup=1,width=800');"><i></i> Help</button>
+        </div>
+
+        <div id="section-settings-right">
+            Transparent background: <input type="checkbox" id="bt-color-alpha" oninput="toggle_background(this.checked)"/>
+            &nbsp;&nbsp;
+            Foreground: <input type="color" id="bt-color-fg" autocomplete="off" oninput="change_foreground(this.value)" value="#000000" />
+            &nbsp;&nbsp;
+            Background: <input type="color" id="bt-color-bg" autocomplete="off" oninput="change_background(this.value)" value="#ddcc91" />
+        </div>
+    </div>
+
+    <div id="section-trunic">
+    </div>
+
+    <h2>Input</h2>
+    <div id="section-input">
+        <textarea id="input" placeholder="Write here the text you want to appear in Trunic writing. You can either use the buttons or write it manually (click the Help button for more info)."></textarea>
+    </div>
+
+    <div class="pure-g">
+        <div id="section-buttons-vowels" class="pure-u-1-2">
+            <h2>Vowels</h2>
+            <div class="bt-trunic vowel" id="bt-trunic-a" onclick="btInput('a')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-a" rowspan="2"></td>
+                        <td class="character">a</td>
+                        <td class="ipa">/æ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">b<b><u>a</u></b>ck, s<b><u>a</u></b>d</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ai" onclick="btInput('ai')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ai" rowspan="2"></td>
+                        <td class="character">ai</td>
+                        <td class="ipa">/aɪ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">g<b><u>u</u></b>y, l<b><u>i</u></b>fe</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ar" onclick="btInput('ar')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ar" rowspan="2"></td>
+                        <td class="character">ar</td>
+                        <td class="ipa">/ɑ:/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>a</u></b>rm, l<b><u>a</u></b>rge</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-e" onclick="btInput('e')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-e" rowspan="2"></td>
+                        <td class="character">e</td>
+                        <td class="ipa">/ɛ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>e</u></b>nd, p<b><u>e</u></b>t</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ee" onclick="btInput('ee')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ee" rowspan="2"></td>
+                        <td class="character">ee</td>
+                        <td class="ipa">/i/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b>b<u>ee</u></b>, t<b><u>ea</u></b>m</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-eer" onclick="btInput('eer')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-eer" rowspan="2"></td>
+                        <td class="character">eer</td>
+                        <td class="ipa">/ɪəʳ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b>n<u>ear</u></b>, h<b><u>ere</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ei" onclick="btInput('ei')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ei" rowspan="2"></td>
+                        <td class="character">ei</td>
+                        <td class="ipa">/ɛi/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">b<b><u>a</u></b>y, g<b><u>a</u></b>me</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-er" onclick="btInput('er')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-er" rowspan="2"></td>
+                        <td class="character">er</td>
+                        <td class="ipa">/eaʳ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>air</u></b>, v<b><u>ar</u></b>y</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-i" onclick="btInput('i')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-i" rowspan="2"></td>
+                        <td class="character">i</td>
+                        <td class="ipa">/ɪ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">b<b><u>i</u></b>t, r<b><u>i</u></b>ch</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ir" onclick="btInput('ir')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ir" rowspan="2"></td>
+                        <td class="character">ir</td>
+                        <td class="ipa">/ɜ:ʳ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">b<b><u>ir</u></b>d, w<b><u>or</u></b>k</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-o" onclick="btInput('o')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-o" rowspan="2"></td>
+                        <td class="character">o</td>
+                        <td class="ipa">/ɔ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">sw<b><u>a</u></b>n, b<b><u>o</u></b>x</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-oh" onclick="btInput('oh')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-oh" rowspan="2"></td>
+                        <td class="character">oh</td>
+                        <td class="ipa">/o/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">t<b><u>oe</u></b>, <b><u>o</u></b>ver</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-oi" onclick="btInput('oi')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-oi" rowspan="2"></td>
+                        <td class="character">oi</td>
+                        <td class="ipa">/ɔɪ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">t<b><u>oy</u></b>, av<b><u>oi</u></b>d</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-oo" onclick="btInput('oo')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-oo" rowspan="2"></td>
+                        <td class="character">oo</td>
+                        <td class="ipa">/u/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">t<b><u>o</u></b>, J<b><u>u</u></b>ne</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-or" onclick="btInput('or')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-or" rowspan="2"></td>
+                        <td class="character">or</td>
+                        <td class="ipa">/ʊəʳ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">y<b><u>our</u></b>, c<b><u>ure</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ou" onclick="btInput('ou')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ou" rowspan="2"></td>
+                        <td class="character">ou</td>
+                        <td class="ipa">/ʊ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">w<b><u>o</u></b>lf, g<b><u>oo</u></b>d</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-ow" onclick="btInput('ow')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ow" rowspan="2"></td>
+                        <td class="character">ow</td>
+                        <td class="ipa">/aʊ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">h<b><u>ow</u></b>, h<b><u>ou</u></b>r</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic vowel" id="bt-trunic-u" onclick="btInput('u')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-u" rowspan="2"></td>
+                        <td class="character">u</td>
+                        <td class="ipa">/ə/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">th<b><u>e</u></b>, <b><u>a</u></b>bout</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    
+        <div id="section-buttons-consonants" class="pure-u-1-2">
+            <h2>Consonants</h2>
+            <div class="bt-trunic consonant" id="bt-trunic-B" onclick="btInput('B')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-B" rowspan="2"></td>
+                        <td class="character">B</td>
+                        <td class="ipa">/b/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>b</u></b>ell, <b><u>b</u></b>oss</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-CH" onclick="btInput('CH')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-CH" rowspan="2"></td>
+                        <td class="character">CH</td>
+                        <td class="ipa">/tʃ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>ch</u></b>at, ca<b><u>tch</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-D" onclick="btInput('D')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-D" rowspan="2"></td>
+                        <td class="character">D</td>
+                        <td class="ipa">/d/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>d</u></b>og, <b><u>d</u></b>ive</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-DH" onclick="btInput('DH')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-DH" rowspan="2"></td>
+                        <td class="character">DH</td>
+                        <td class="ipa">/ð/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>th</u></b>is, ba<b><u>th</u></b>e</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-F" onclick="btInput('F')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-F" rowspan="2"></td>
+                        <td class="character">F</td>
+                        <td class="ipa">/f/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>f</u></b>ox, <b><u>f</u></b>ail</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-G" onclick="btInput('G')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-G" rowspan="2"></td>
+                        <td class="character">G</td>
+                        <td class="ipa">/g/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>g</u></b>un, ba<b><u>g</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-H" onclick="btInput('H')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-H" rowspan="2"></td>
+                        <td class="character">H</td>
+                        <td class="ipa">/h/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>h</u></b>op, <b><u>h</u></b>ouse</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-J" onclick="btInput('J')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-J" rowspan="2"></td>
+                        <td class="character">J</td>
+                        <td class="ipa">/dʒ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>j</u></b>am, ju<b><u>dg</u></b>e</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-K" onclick="btInput('K')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-K" rowspan="2"></td>
+                        <td class="character">K</td>
+                        <td class="ipa">/k/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>c</u></b>at, s<b><u>k</u></b>ip</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-L" onclick="btInput('L')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-L" rowspan="2"></td>
+                        <td class="character">L</td>
+                        <td class="ipa">/l/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>l</u></b>ive, <b><u>l</u></b>eaf</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-M" onclick="btInput('M')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-M" rowspan="2"></td>
+                        <td class="character">M</td>
+                        <td class="ipa">/m/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>m</u></b>an, <b><u>m</u></b>i<b><u>m</u></b>e</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-N" onclick="btInput('N')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-N" rowspan="2"></td>
+                        <td class="character">N</td>
+                        <td class="ipa">/n/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>n</u></b>et, <b><u>n</u></b>u<b><u>n</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-NG" onclick="btInput('NG')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-NG" rowspan="2"></td>
+                        <td class="character">NG</td>
+                        <td class="ipa">/ŋ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">ri<b><u>nk</u></b>, si<b><u>ng</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-P" onclick="btInput('P')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-P" rowspan="2"></td>
+                        <td class="character">P</td>
+                        <td class="ipa">/p/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>p</u></b>o<u>pp</u></b>y, <b><u>p</u></b>i<b><u>p</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-R" onclick="btInput('R')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-R" rowspan="2"></td>
+                        <td class="character">R</td>
+                        <td class="ipa">/r/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>r</u></b>un, bo<b><u>rr</u></b>ow</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-S" onclick="btInput('S')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-S" rowspan="2"></td>
+                        <td class="character">S</td>
+                        <td class="ipa">/s/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>s</u></b>it, <b><u>s</u></b>a<b><u>ss</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-SH" onclick="btInput('SH')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-SH" rowspan="2"></td>
+                        <td class="character">SH</td>
+                        <td class="ipa">/ʃ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>sh</u></b>ut, <b><u>sh</u></b>oe</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-T" onclick="btInput('T')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-T" rowspan="2"></td>
+                        <td class="character">T</td>
+                        <td class="ipa">/t/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>t</u></b>unic, s<b><u>t</u></b>op</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-TH" onclick="btInput('TH')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-TH" rowspan="2"></td>
+                        <td class="character">TH</td>
+                        <td class="ipa">/θ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>th</u></b>ink, ba<b><u>th</u></b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-V" onclick="btInput('V')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-V" rowspan="2"></td>
+                        <td class="character">V</td>
+                        <td class="ipa">/v/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>v</u></b>ine, <b><u>v</u></b>er<b><u>v</u></b>e</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-W" onclick="btInput('W')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-W" rowspan="2"></td>
+                        <td class="character">W</td>
+                        <td class="ipa">/w/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>w</u></b>it, <b><u>w</u></b>ow</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-Y" onclick="btInput('Y')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-Y" rowspan="2"></td>
+                        <td class="character">Y</td>
+                        <td class="ipa">/j/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>y</u></b>ou, <b><u>y</u></b>es</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-Z" onclick="btInput('Z')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-Z" rowspan="2"></td>
+                        <td class="character">Z</td>
+                        <td class="ipa">/z/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2"><b><u>z</u></b>it, <b><u>z</u></b>oo</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bt-trunic consonant" id="bt-trunic-ZH" onclick="btInput('ZH')">
+                <table>
+                    <tr>
+                        <td class="rune" id="rune-ZH" rowspan="2"></td>
+                        <td class="character">ZH</td>
+                        <td class="ipa">/ʒ/</td>
+                    </tr>
+                    <tr>
+                        <td class="examples" colspan="2">mea<b><u>s</u></b>ure</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="section-buttons-special">
+        <h2>Other characters</h2>
+        <div class="bt-trunic special" onclick="btSpecialInput(' ')">space</div>
+        <div class="bt-trunic special" onclick="btSpecialInput('? ')">?</div>
+        <div class="bt-trunic special" onclick="btSpecialInput('! ')">!</div>
+        <div class="bt-trunic special" onclick="btSpecialInput(', ')">,</div>
+        <div class="bt-trunic special" onclick="btSpecialInput('. ')">.</div>
+        <div class="bt-trunic special" onclick="btSpecialInput(': ')">:</div>
+        <div class="bt-trunic special" onclick="btSpecialInput('; ')">;</div>
+        <div class="bt-trunic special" onclick="btSpecialInput('(')">(</div>
+        <div class="bt-trunic special" onclick="btSpecialInput(')')">)</div>
+    </div>
+
+</main>
+
+</body>
+
+<script src="js/vendor/html2canvas.min.js"></script>
+<script src="js/vendor/FileSaver.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ui.js"></script>
+
+</html>

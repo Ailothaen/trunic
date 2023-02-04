@@ -1,0 +1,242 @@
+/* Directives */
+
+@font-face
+{
+font-family: "Icons";
+src: url("fonts/fontello.woff2");
+}
+
+@font-face
+{
+font-family: "Odin";
+src: url("fonts/Odin_Rounded_Bold.otf");
+}
+
+@font-face
+{
+font-family: "Consolas";
+src: url("fonts/Consolas.ttf");
+}
+
+@font-face
+{
+font-family: "Source Sans Pro";
+src: url("fonts/SourceSansPro-Regular.ttf");
+}
+
+
+/* General */
+
+*
+{
+box-sizing: border-box;
+
+}
+
+body
+{
+padding: 2em;
+background-color: #222f3e;
+font-family: "Source Sans Pro";
+}
+
+canvas
+{
+width: 100%;
+height: 10vh;
+border: 1px solid black;
+}
+
+textarea
+{
+width: 100%;
+height: 10vh;
+}
+
+h1, h2
+{
+font-family: "Odin";
+font-weight: 100;
+}
+
+
+/* Sections */
+
+main
+{
+max-width: 1500px;
+margin: 0px auto;
+padding: 2em;
+background-color: white;
+}
+
+
+#section-trunic
+{
+min-height: 120px;
+background-color: #ddcc91;
+margin: 1.5em 0;
+border: 2px dashed black;
+padding: 0.5em;
+resize: both;
+overflow-x: hidden;
+overflow-y: auto;
+}
+
+#section-input
+{
+background-color: #ccffcc;
+}
+
+#section-settings
+{
+display: flex;
+}
+
+#section-settings-left
+{
+line-height: 2.5em;
+text-align: left;
+}
+
+#section-settings-right
+{
+flex: 1 1 auto;
+line-height: 2.5em;
+text-align: right;
+}
+
+
+/* Elements */
+
+.bt-trunic
+{
+display: inline-block;
+width: 140px;
+height: 60px;
+margin: 0.5rem;
+border: 1px solid black;
+cursor: pointer;
+}
+
+.bt-trunic table
+{
+width: 100%;
+height: 100%;
+border-collapse: collapse;
+text-align: center;
+}
+
+.bt-trunic .rune
+{
+width: 33%;
+}
+
+.bt-trunic .rune svg
+{
+height: 50px;
+margin-right: 0;
+}
+
+.bt-trunic .character
+{
+width: 33%;
+font-weight: bold;
+}
+
+.bt-trunic .ipa
+{
+width: 33%;
+font-family: "Consolas";
+}
+
+.bt-trunic.consonant
+{
+background-color: #5d8bb0;
+}
+
+.bt-trunic.vowel
+{
+background-color: #86b38c;
+}
+
+.bt-trunic.special
+{
+background-color: #d0d0d0;
+text-align: center;
+line-height: 3em;
+font-family: "Consolas";
+font-size: 20px;
+}
+
+.bt-trunic.hl
+{
+background-color: #e7e70c;
+}
+
+i
+{
+font-family: "Icons";
+font-style: normal;
+}
+
+svg
+{
+margin-right: -5px;
+}
+
+
+/* PureCSS extensions */
+
+.pure-button-success
+{
+background-color: #2ecc71;
+}
+
+.pure-button-error
+{
+background: rgb(202, 60, 60);
+}
+
+.pure-button-warning
+{
+background: rgb(223, 117, 20);
+}
+
+
+/* Ribbon */
+
+h1.ribbon
+{
+display: inline-block;
+position: relative;
+margin-top: 0;
+margin-bottom: 1em;
+padding: 0.25em 1.5em;
+background-color: #b35672;
+font-size: 40px;
+}
+
+h1.ribbon::before, h1.ribbon::after
+{
+position: absolute;
+height: 0;
+width: 0;
+top: 18px;
+z-index: -10;
+content: '';
+border-style: solid;
+border-width: 30px;
+}
+    
+h1.ribbon::before
+{
+left: -40px;
+border-color: #97445d #97445d #97445d transparent;
+}
+
+h1.ribbon::after
+{
+right: -40px;
+border-color: #97445d transparent #97445d #97445d;
+}

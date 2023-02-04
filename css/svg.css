@@ -1,0 +1,14 @@
+line, circle
+{
+    stroke-linecap: round;
+    stroke-width: 20;
+    stroke: var(--svg-fg);
+}
+
+path
+{
+    stroke-linecap: round;
+    stroke-width: 10;
+    stroke: var(--svg-fg);
+    fill: var(--svg-fg);
+}
