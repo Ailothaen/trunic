@@ -3,7 +3,7 @@
 **IMPORTANT: If you have not played the game TUNIC and intend to play it, it is strongly unadvised to use this app and to read this README further, as it is basically a big game spoiler.**
 
 <p align="center">
-<img src="https://github.com/ailothaen/trunic/blob/main/logo.png?raw=true" alt="logo.png" width="200">
+<img src="https://github.com/ailothaen/trunic/blob/main/logo.png?raw=true" alt="logo.png">
 </p>
 
 Trunic Drawer is a web tool that draws for you Trunic text (Trunic is the secret writing system used in the game [TUNIC](https://store.steampowered.com/app/553420/TUNIC/))
