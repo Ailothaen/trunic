@@ -6,6 +6,8 @@
 <img src="https://github.com/ailothaen/trunic/blob/main/logo.png?raw=true" alt="logo.png">
 </p>
 
+**Give it a try here: https://ailothaen.fr/tunic/trunic/**
+
 Trunic Drawer is a web tool that draws for you Trunic text (Trunic is the secret writing system used in the game [TUNIC](https://store.steampowered.com/app/553420/TUNIC/))
 
 If you want to get well-drawn Trunic runes to talk with someone in Trunic, use Trunic text for a project such as an artwork or comic, or just want to play with the writing system, this app is for you!
@@ -33,6 +35,6 @@ Then, press Draw to draw the Trunic runes. You may then download the result as P
 
 You can also directly type text, if you know the tool and want to go faster. Remember that consonant part is always uppercase, vowel case is always lowercase, and a dash has to be put between each rune (so the tool knows where a rune begin and where a rune ends).
 
-What you should write is shown in each button (for example, for the syllable */θa/*, you have to write THa)
+What you should write is shown in each button (for example, to write `/ai.lɔ.ta.ɛn/`, you have to write `ai-Lo-Ta-eN`)
 
 Then, press Draw to draw the Trunic runes. You may then download the result as PNG or SVG. You can also resize the box or change the foreground/background colors if you want, before downloading.
